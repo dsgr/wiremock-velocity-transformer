@@ -134,7 +134,7 @@ public class VelocityResponseTransformer extends ResponseDefinitionTransformer {
                 .orElseGet(() -> {
                     final JSONParser parser = new JSONParser(JSONParser.MODE_JSON_SIMPLE);
                     return Unchecked.supplier(() -> {
-                        final JSONObject json = (JSONObject) parser.parse(body);
+                        final Object json = parser.parse(body);
                         context.put("requestBody", json);
                         return context;
                     }).get();
